@@ -1,4 +1,4 @@
-package io.mattmoore.scala.bcrypt
+package io.mattmoore.bcrypt
 
 import org.scalatest._
 

@@ -1,4 +1,4 @@
-package io.mattmoore.scala.bcrypt
+package io.mattmoore.bcrypt
 
 object BCrypt {
   def hashpw(plaintext: String, salt: String): Either[String, String] =
