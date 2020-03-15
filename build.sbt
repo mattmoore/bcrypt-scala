@@ -8,7 +8,6 @@ ThisBuild / organizationName := "mattmoore"
 lazy val root = (project in file("."))
   .settings(
     name := "bcrypt-scala",
-    libraryDependencies += "org.mindrot" % "jbcrypt" % "0.4",
     libraryDependencies += scalaTest % Test
   )
 
