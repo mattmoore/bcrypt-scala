@@ -24,6 +24,6 @@ class BCryptSpec extends FlatSpec with Matchers {
   }
 
   "checkpw" should "return false if the password is invalid" in {
-    BCrypt.checkpw("wrong", hashed) shouldBe Right(false)
+    BCrypt.checkpw("wrong", hashed) shouldBe Left("Invalid password.")
   }
 }

@@ -24,7 +24,12 @@ object BCrypt {
 
   def checkpw(plaintext: String, hashed: String): Either[String, Boolean] =
     try {
-      Right(org.mindrot.jbcrypt.BCrypt.checkpw(plaintext, hashed))
+      val valid = org.mindrot.jbcrypt.BCrypt.checkpw(plaintext, hashed)
+      if (valid) {
+        Right(true)
+      } else {
+        Left("Invalid password.")
+      }
     } catch {
       case e: Exception => Left(e.getMessage)
     }
