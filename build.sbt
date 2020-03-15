@@ -2,12 +2,13 @@ import Dependencies._
 
 ThisBuild / scalaVersion     := "2.13.1"
 ThisBuild / version          := "0.1.0-SNAPSHOT"
-ThisBuild / organization     := "com.example"
-ThisBuild / organizationName := "example"
+ThisBuild / organization     := "io.mattmoore.scala"
+ThisBuild / organizationName := "bcrypt"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "io.mattmoore.bcrypt-scala",
+    name := "io.mattmoore.scala.bcrypt",
+    libraryDependencies += "org.mindrot" % "jbcrypt" % "0.4",
     libraryDependencies += scalaTest % Test
   )
 
