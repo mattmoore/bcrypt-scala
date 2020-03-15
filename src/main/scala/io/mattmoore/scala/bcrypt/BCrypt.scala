@@ -24,7 +24,17 @@ object BCrypt {
 
   def checkpw(plaintext: String, hashed: String): Either[String, Boolean] =
     try {
-      Right(org.mindrot.BCrypt.checkpw(plaintext, hashed))
+      val tryPw = org.mindrot.BCrypt.hashpw(plaintext, hashed)
+      val hashedBytes = hashed.getBytes("UTF-8")
+      val tryBytes = tryPw.getBytes("UTF-8")
+      if (hashedBytes.length != tryBytes.length) {
+        Left("Password did not match.")
+      } else {
+        val result = (tryBytes zip hashedBytes) { case (a, b) =>
+          b ^ a
+        }
+        Right(org.mindrot.BCrypt.checkpw(plaintext, hashed))
+      }
     } catch {
       case e: Exception => Left(e.getMessage)
     }
