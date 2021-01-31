@@ -1,6 +1,6 @@
 package io.mattmoore.bcrypt
 
-object BCrypt {
+object BCrypt:
   def hashpw(plaintext: String, salt: String): Either[String, String] =
     try {
       Right(org.mindrot.jbcrypt.BCrypt.hashpw(plaintext, salt))
@@ -33,4 +33,3 @@ object BCrypt {
     } catch {
       case e: Exception => Left(e.getMessage)
     }
-}
